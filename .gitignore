@@ -1,11 +1,9 @@
-# Godot 4+ specific ignores
-.godot/
-.nomedia
-
 # Godot-specific ignores
+.godot/
 .import/
 export.cfg
 export_credentials.cfg
+.nomedia
 
 # Imported translations (automatically generated from CSV files)
 *.translation
@@ -14,3 +12,35 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+# System/Editor files
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+*.pck
+*.zip
+*.exe
+*.wasm
+*.js
+*.html
+*.apple
+*.apk
+*.aab
+*.ipa
+*.dmg
+*.pkg
+*.app
+
+# Binary resources (often handled by LFS, but good to keep out of standard builds)
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+*.pdb
+
+# Temporary files
+*.tmp
+*.log
+*~
