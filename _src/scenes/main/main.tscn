@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://nh2qmrjfe44n"]
+
+[ext_resource type="Texture2D" uid="uid://betve747x66cr" path="res://_src/assets/Top-Down/Cards/Card_Back-88x124.png" id="1_drafp"]
+[ext_resource type="Texture2D" uid="uid://0gk5cbkjl01h" path="res://_src/assets/Top-Down/Cards/Clubs-88x124.png" id="2_wr1xf"]
+
+[node name="Main" type="Node2D" unique_id=924921472]
+
+[node name="Background" type="Control" parent="." unique_id=820935908]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Background" unique_id=195518885]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13333334, 0.5803922, 0.105882354, 1)
+
+[node name="UI" type="Control" parent="." unique_id=572887806]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DealButton" type="Button" parent="UI" unique_id=2118199462]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Deal"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1561162315]
+texture = ExtResource("1_drafp")
+region_enabled = true
+region_rect = Rect2(0, 0, 88, 124)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1179216648]
+texture = ExtResource("2_wr1xf")
+hframes = 5
+vframes = 3
