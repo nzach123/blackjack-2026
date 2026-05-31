@@ -8,10 +8,10 @@
 script = ExtResource("1_aauxr")
 
 [node name="CardsClubsFrontSprite2D" type="Sprite2D" parent="." unique_id=146445862]
+position = Vector2(-3, 1)
 texture = ExtResource("2_1ung8")
 hframes = 5
 vframes = 3
-frame = 9
 
 [node name="CardsBackSprite2D" type="Sprite2D" parent="." unique_id=333437792]
 visible = false

@@ -55,7 +55,13 @@ func deal_cards(start_pos: Vector2, count: int = 2, hide_first:bool = false) -> 
 	
 ## Reads the score of all cards in a given hand array
 func calaculate_hand_score(hand: Array[Node]) -> int:
-	var total = 0 
+	var score = 0
+	var ace_count: int = 0 
 	for card in hand:
-		total += card.card_score
-	return total
+		score += card.card_score
+		if card.is_ace:
+			ace_count += 1
+	for i in range(ace_count):
+		if score + 10 <= 21:
+			score += 10
+	return score
