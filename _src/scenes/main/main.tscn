@@ -48,15 +48,37 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "Deal"
 
-[node name="UserScoreLabel" type="Label" parent="UI" unique_id=1758475248]
-layout_mode = 0
-offset_left = 563.0
-offset_top = 106.0
-offset_right = 603.0
-offset_bottom = 194.0
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=1551057472]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer" unique_id=1604229752]
+layout_mode = 2
+
+[node name="DealerScoreLabel" type="Label" parent="UI/MarginContainer/VBoxContainer" unique_id=761041413]
+layout_mode = 2
 theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MarginContainer/VBoxContainer" unique_id=1421607196]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="UserScoreLabel" type="Label" parent="UI/MarginContainer/VBoxContainer" unique_id=1758475248]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CardElements" type="Node2D" parent="." unique_id=182700398]
 
 [node name="UserDeckPos" type="Marker2D" parent="." unique_id=513518196]
-position = Vector2(626, 312)
+position = Vector2(523, 498)
+
+[node name="DealerDeckPos" type="Marker2D" parent="." unique_id=1379319623]
+position = Vector2(523, 164)

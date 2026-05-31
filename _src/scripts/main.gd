@@ -1,45 +1,61 @@
 extends Node2D
 @onready var user_deck_pos: Marker2D = $UserDeckPos
-@onready var user_score_label: Label = $UI/UserScoreLabel
+@onready var dealer_deck_pos: Marker2D = $DealerDeckPos
 
+@onready var user_score_label: Label = $UI/MarginContainer/VBoxContainer/UserScoreLabel
+@onready var dealer_score_label: Label = $UI/MarginContainer/VBoxContainer/DealerScoreLabel
 
+@export var card_offset := Vector2(95, 0)
+ 
 const CARDS = preload("uid://bsk2x8xhstr2q")
 var user_card = PackedScene
 
 var user_hand: Array[Node] = []
+var dealer_hand: Array[Node] = []
 
 var user_score = []
 var user_total_score = 0
+
+
+
+
+
+
+
 func _ready() -> void:
-	user_hand = spawn_user_init_cards(user_deck_pos.global_position)
-	for num in user_score:
-		user_total_score += num
-	print(user_total_score)
+	# Asign two cards to the user and dealer 
+	user_hand = deal_cards(user_deck_pos.global_position)
+	dealer_hand = deal_cards(dealer_deck_pos.global_position, 2, true)
 	
-	# Display user score
+	# Calcutes the total score for both user and dealer
+	var user_total_score = calaculate_hand_score(user_hand)
+	var dealer_total_score = calaculate_hand_score(dealer_hand)
+	
+	# Displays user and dealer score through thier labels
 	user_score_label.text = str(user_total_score)
+	dealer_score_label.text = str(dealer_total_score)
+
 	
 func _process(delta: float) -> void:
 	pass
 	
 
-## offsets and spawns the user 2 cards to the users section, 
-## add card score to user_total_score list,
-## returns the card objs as an array.
-func spawn_user_init_cards(spawn_point: Vector2) -> Array[Node]:
 
+
+## Instantiates a specific number of cards at the starting position. 
+## Handles offsetting and optionally hiding first card
+func deal_cards(start_pos: Vector2, count: int = 2, hide_first:bool = false) -> Array[Node]:
+	var hand: Array[Node] = []
+	for i in range(count):
+		var card = CARDS.instantiate()
+		card.global_position = start_pos + (card_offset * i)
+		add_child(card)
+		hand.append(card)
+	return hand
 	
-	var spawn_position = spawn_point
-	var user_hand: Array[Node] = []
-	
-	for card in range(2):
-		user_card = CARDS.instantiate()
-		user_card.global_position = spawn_position + Vector2(card * 64, 0)
-		
-		add_child(user_card)
-		user_score.append(user_card.card_score)
-		user_hand.append(user_card)
-		
-	print(user_score)
-	return user_hand
-	
+## Reads the score of all cards in a given hand array
+func calaculate_hand_score(hand: Array[Node]) -> int:
+	var total = 0 
+	for card in hand:
+		total += card.card_score
+	return total
