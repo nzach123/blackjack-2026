@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://nh2qmrjfe44n"]
 
-[ext_resource type="Texture2D" uid="uid://betve747x66cr" path="res://_src/assets/Top-Down/Cards/Card_Back-88x124.png" id="1_drafp"]
-[ext_resource type="Texture2D" uid="uid://0gk5cbkjl01h" path="res://_src/assets/Top-Down/Cards/Clubs-88x124.png" id="2_wr1xf"]
+[ext_resource type="Script" uid="uid://bvcklrutcvc5q" path="res://_src/scripts/main.gd" id="1_drafp"]
+[ext_resource type="Texture2D" uid="uid://q7q4ayhr8jk4" path="res://_src/assets/Background/vecteezy_green-casino-poker-table-texture-game-background_24232274.jpg" id="1_ylhgh"]
 
 [node name="Main" type="Node2D" unique_id=924921472]
+script = ExtResource("1_drafp")
 
 [node name="Background" type="Control" parent="." unique_id=820935908]
 layout_mode = 3
@@ -24,6 +25,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.13333334, 0.5803922, 0.105882354, 1)
 
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=1676985400]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ylhgh")
+
 [node name="UI" type="Control" parent="." unique_id=572887806]
 layout_mode = 3
 anchors_preset = 15
@@ -40,12 +47,7 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "Deal"
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1561162315]
-texture = ExtResource("1_drafp")
-region_enabled = true
-region_rect = Rect2(0, 0, 88, 124)
+[node name="CardElements" type="Node2D" parent="." unique_id=182700398]
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1179216648]
-texture = ExtResource("2_wr1xf")
-hframes = 5
-vframes = 3
+[node name="UserDeckPos" type="Marker2D" parent="." unique_id=513518196]
+position = Vector2(626, 312)
