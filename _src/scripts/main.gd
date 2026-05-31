@@ -1,5 +1,7 @@
 extends Node2D
 @onready var user_deck_pos: Marker2D = $UserDeckPos
+@onready var user_score_label: Label = $UI/UserScoreLabel
+
 
 const CARDS = preload("uid://bsk2x8xhstr2q")
 var user_card = PackedScene
@@ -13,13 +15,20 @@ func _ready() -> void:
 	for num in user_score:
 		user_total_score += num
 	print(user_total_score)
-		
+	
+	# Display user score
+	user_score_label.text = str(user_total_score)
+	
 func _process(delta: float) -> void:
 	pass
 	
 
-
+## offsets and spawns the user 2 cards to the users section, 
+## add card score to user_total_score list,
+## returns the card objs as an array.
 func spawn_user_init_cards(spawn_point: Vector2) -> Array[Node]:
+
+	
 	var spawn_position = spawn_point
 	var user_hand: Array[Node] = []
 	
