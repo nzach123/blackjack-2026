@@ -91,12 +91,23 @@ text = "Restart"
 [node name="HitButton" type="Button" parent="UI" unique_id=1155407671]
 layout_mode = 0
 offset_left = 97.0
+offset_top = 118.0
+offset_right = 238.0
+offset_bottom = 179.0
+theme = SubResource("Theme_wr1xf")
+theme_override_font_sizes/font_size = 38
+text = "Hit"
+
+[node name="HoldButton" type="Button" parent="UI" unique_id=363384629]
+layout_mode = 0
+offset_left = 97.0
 offset_top = 219.0
 offset_right = 238.0
 offset_bottom = 280.0
 theme = SubResource("Theme_wr1xf")
 theme_override_font_sizes/font_size = 38
-text = "Hit"
+text = "Hold
+"
 
 [node name="CardElements" type="Node2D" parent="." unique_id=182700398]
 
@@ -108,3 +119,4 @@ position = Vector2(523, 164)
 
 [connection signal="pressed" from="UI/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="UI/HitButton" to="." method="_on_hit_button_pressed"]
+[connection signal="pressed" from="UI/HoldButton" to="." method="_on_hold_button_pressed"]

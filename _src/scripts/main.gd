@@ -20,10 +20,6 @@ var user_total_score = 0
 var dealer_total_score = 0
 
 
-
-
-
-
 func _ready() -> void:
 	# Asign two cards to the user and dealer 
 	user_hand = deal_cards(user_deck_pos.global_position)
@@ -58,6 +54,21 @@ func deal_cards(start_pos: Vector2, count: int = 2, hide_first:bool = false) -> 
 		hand.append(card)
 	return hand
 	
+func compare_cards(user_score: int, dealer_score: int) -> String:
+	if user_score == dealer_score:
+		return "Draw"
+	elif dealer_score == 0:
+		return "Dealer Wins"
+	elif user_score > 21:
+		return "Dealer Wins"
+	elif dealer_score > 21:
+		return "You Win"
+	elif user_score > dealer_score:
+		return "You Win"
+	else:
+		return "Dealer Wins"
+		
+	
 func draw_card(hand: Array[Node], start_pos: Vector2, hide_card: bool = false) -> void:
 	var card = CARDS.instantiate()
 	var current_card_count = hand.size()
@@ -70,9 +81,13 @@ func calaculate_hand_score(hand: Array[Node]) -> int:
 	var score = 0
 	var ace_count: int = 0 
 	for card in hand:
+		if card.is_hidden:
+			continue
 		score += card.card_score
 		if card.is_ace:
 			ace_count += 1
+		
+			
 	for i in range(ace_count):
 		if score + 10 <= 21:
 			score += 10
@@ -87,4 +102,9 @@ func _on_hit_button_pressed() -> void:
 	user_hits = true
 	draw_card(user_hand, user_deck_pos.global_position)
 	update_score()
-	
+
+
+func _on_hold_button_pressed() -> void:
+	dealer_hand[0].card_unhidden()
+	update_score()
+	print(compare_cards(user_total_score, dealer_total_score))

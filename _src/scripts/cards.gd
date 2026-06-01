@@ -5,6 +5,7 @@ class_name Cards
 var card_number: int = 1
 var card_score: int = 0
 var is_ace: bool = false
+var is_hidden: bool = false
 
 func _ready() -> void:
 	random_card()
@@ -23,9 +24,11 @@ func calc_card_score() -> void:
 		card_score = (card_number + 1)
 
 func card_hidden() -> void:
+	is_hidden = true
 	cards_clubs.visible = false
 	cards_back.visible = true
 	
 func card_unhidden() -> void:
+	is_hidden = false
 	cards_back.visible = false
 	cards_clubs.visible = true
