@@ -29,10 +29,3 @@ func card_hidden() -> void:
 func card_unhidden() -> void:
 	cards_back.visible = false
 	cards_clubs.visible = true
-
-func _on_hide_cards_pressed() -> void:
-	card_hidden()
-
-
-func _on_un_hide_cards_pressed() -> void:
-	card_unhidden()
